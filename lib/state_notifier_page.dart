@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:state_flutter_riverpod/notifier/number_notifier.dart';
+import 'package:state_flutter_riverpod/notifier/number_state_notifier.dart';
 
 final numberProvider = Provider<int>((ref) {
   return 42;
@@ -10,22 +10,22 @@ final numberStateProvider = StateProvider<int>((ref) {
   return 44;
 });
 
-final numberNotifierProvider =
-    StateNotifierProvider<NumberNotifier, List<int>>((ref) {
-  return NumberNotifier();
+final numberStateNotifierProvider =
+    StateNotifierProvider<NumberStateNotifier, List<int>>((ref) {
+  return NumberStateNotifier();
 });
 
-class NumberNotifierPage extends ConsumerWidget {
-  const NumberNotifierPage({Key? key}) : super(key: key);
+class StateNotifierPage extends ConsumerWidget {
+  const StateNotifierPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final number = ref.watch(numberProvider);
     final numberState = ref.watch(numberStateProvider);
-    final numberNotifierState = ref.watch(numberNotifierProvider);
+    final numberNotifierState = ref.watch(numberStateNotifierProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider: NotifierProvider'),
+        title: const Text('Provider: StateNotifierProvider'),
       ),
       body: Center(
         child: ListView.builder(
@@ -40,7 +40,7 @@ class NumberNotifierPage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         // backgroundColor: Colors.green,
         onPressed: () {
-          ref.read(numberNotifierProvider.notifier).add(10);
+          ref.read(numberStateNotifierProvider.notifier).add(10);
         },
         child: const Icon(Icons.add),
       ),

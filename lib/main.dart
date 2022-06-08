@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'number_notifier_page.dart';
+import 'state_notifier_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: NumberNotifierPage(),
+      home: StateNotifierPage(),
     );
   }
 }
