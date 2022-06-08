@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final futureProvider = FutureProvider.autoDispose<int>(
+// not use
+final futureProvider = FutureProvider(
   (ref) {
     return Future.value(123);
   },
 );
 
-final streamProvider = StreamProvider.autoDispose<int>(
+final streamProvider = FutureProvider(
   (ref) {
-    return Stream.value(456);
+    return Future.value(456);
   },
 );
 
-class FutureStreamPage extends ConsumerWidget {
-  const FutureStreamPage({Key? key}) : super(key: key);
+class ScopeProviderPage extends ConsumerWidget {
+  const ScopeProviderPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
