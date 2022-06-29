@@ -27,6 +27,7 @@ class FutureStreamPage extends ConsumerWidget {
       ),
       body: Column(
         children: [
+          const SizedBox(height: 20),
           const Text('Future Number'),
           Center(
             child: futureNumber.when(

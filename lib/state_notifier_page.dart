@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:state_flutter_riverpod/notifier/number_state_notifier.dart';
 
-final numberProvider = Provider<int>((ref) {
-  return 42;
-});
+// State Notifier
+class NumberStateNotifier extends StateNotifier<List<int>> {
+  NumberStateNotifier() : super([11]);
 
-final numberStateProvider = StateProvider<int>((ref) {
-  return 44;
-});
+  void add(int number) {
+    state = [...state, number];
+  }
 
+  // not use now
+  // void delete(int number) {
+  //   state = [
+  //     for (final loopNumber in state)
+  //       if (number != loopNumber) loopNumber
+  //   ];
+  // }
+}
+
+// State Notifier Provider
 final numberStateNotifierProvider =
     StateNotifierProvider<NumberStateNotifier, List<int>>((ref) {
   return NumberStateNotifier();
 });
 
+// StateNotifierPage
 class StateNotifierPage extends ConsumerWidget {
   const StateNotifierPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final number = ref.watch(numberProvider);
-    final numberState = ref.watch(numberStateProvider);
     final numberNotifierState = ref.watch(numberStateNotifierProvider);
     return Scaffold(
       appBar: AppBar(
@@ -38,16 +46,11 @@ class StateNotifierPage extends ConsumerWidget {
             }),
       ),
       floatingActionButton: FloatingActionButton(
-        // backgroundColor: Colors.green,
         onPressed: () {
           ref.read(numberStateNotifierProvider.notifier).add(10);
         },
         child: const Icon(Icons.add),
       ),
     );
-  }
-
-  void increment(WidgetRef ref) {
-    ref.read(numberStateProvider.notifier).state++;
   }
 }

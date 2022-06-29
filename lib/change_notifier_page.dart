@@ -1,34 +1,31 @@
+import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:state_flutter_riverpod/notifier/number_change_notifier.dart';
-import 'package:state_flutter_riverpod/notifier/number_state_notifier.dart';
 
-final numberProvider = Provider<int>((ref) {
-  return 42;
-});
+// Number_Change_Notifier
+class NumberChangeNotifier extends ChangeNotifier {
+  final List<int> _numbers = [111];
 
-final numberStateProvider = StateProvider<int>((ref) {
-  return 44;
-});
+  UnmodifiableListView<int> get numbers => UnmodifiableListView(_numbers);
 
-final numberStateNotifierProvider =
-    StateNotifierProvider<NumberStateNotifier, List<int>>((ref) {
-  return NumberStateNotifier();
-});
+  void add(int number) {
+    _numbers.add(number);
+    notifyListeners();
+  }
+}
 
+// number_Change_Notifier_Provider
 final numberChangeNotifierProvider =
     ChangeNotifierProvider<NumberChangeNotifier>((ref) {
   return NumberChangeNotifier();
 });
 
+// ChangeNotifierPage
 class ChangeNotifierPage extends ConsumerWidget {
   const ChangeNotifierPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final number = ref.watch(numberProvider);
-    final numberState = ref.watch(numberStateProvider);
-    final numberNotifierState = ref.watch(numberStateNotifierProvider);
     final numberChangeNotifierState = ref.watch(numberChangeNotifierProvider);
     return Scaffold(
       appBar: AppBar(
@@ -47,14 +44,10 @@ class ChangeNotifierPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(numberChangeNotifierProvider.notifier).add(11);
+          ref.read(numberChangeNotifierProvider.notifier).add(111);
         },
         child: const Icon(Icons.add),
       ),
     );
-  }
-
-  void increment(WidgetRef ref) {
-    ref.read(numberStateProvider.notifier).state++;
   }
 }
