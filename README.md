@@ -11,7 +11,7 @@
 
 ## Acknowledgements
 
- - [State Management Like A Pro - Flutter Riverpod in Youtube](console.firebase.google.com/project/library-14fed/overview)
+ - [State Management Like A Pro - Flutter Riverpod in Youtube](https://www.youtube.com/watch?v=GVspNESSess&t=68s)
  
 
 
