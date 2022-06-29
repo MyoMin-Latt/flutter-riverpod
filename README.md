@@ -1,16 +1,32 @@
-# state_flutter_riverpod
 
-A new Flutter project.
+# Flutter Riverpod
 
-## Getting Started
+ - Provider 
+ - StateProvider
+ - StateNotifierProvider
+ - ChangeNotifierProvider
+ - FutureProvider
+ - StreamProvider
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Acknowledgements
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+ - [State Management Like A Pro - Flutter Riverpod in Youtube](console.firebase.google.com/project/library-14fed/overview)
+ 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## dependencies
+  - retrofit: any
+  - get: ^4.6.1
+  - cached_network_image: ^3.2.0
+  - logger: ^1.1.0
+  - dio_flutter_transformer2: ^4.0.1
+  - dio_http_cache: ^0.3.0
+  - dio_cache_interceptor: ^3.2.7
+  - dio_cache_interceptor_hive_store: ^3.1.1
+  - path_provider: ^2.0.11
+
+  
+## dev_dependencies:
+  - hooks_riverpod: ^1.0.4
+
