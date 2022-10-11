@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:state_flutter_riverpod/future_stream_page_version2.dart';
 import 'package:state_flutter_riverpod/local_storage/flutter_secure_storage/flutter_secure_storage_page.dart';
 import 'package:state_flutter_riverpod/local_storage/share_prefs/share_preference_page.dart';
-import 'package:state_flutter_riverpod/state_notifier_page.dart';
 
-import 'change_notifier_page.dart';
-import 'future_stream_page.dart';
-import 'provider_page.dart';
-import 'provider_page2.dart';
-import 'state_provider_page.dart';
+import 'providers/change_notifier_page.dart';
+import 'providers/future_stream_page.dart';
+import 'providers/future_stream_page_version2.dart';
+import 'providers/provider_page.dart';
+import 'providers/provider_page2.dart';
+import 'providers/state_notifier_page.dart';
+import 'providers/state_provider_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
