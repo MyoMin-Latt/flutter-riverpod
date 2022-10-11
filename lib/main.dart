@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:state_flutter_riverpod/future_stream_page_version2.dart';
+import 'package:state_flutter_riverpod/local_storage/flutter_secure_storage/flutter_secure_storage_page.dart';
+import 'package:state_flutter_riverpod/local_storage/share_prefs/share_preference_page.dart';
+import 'package:state_flutter_riverpod/state_notifier_page.dart';
 
 import 'change_notifier_page.dart';
 import 'future_stream_page.dart';
@@ -27,6 +31,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double defaultHeigh = 5;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hook Riverpod'),
@@ -35,6 +40,16 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(18.0),
         child: ListView(
           children: [
+            const Text(
+              'Riverpod State',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: 5),
+
+            // Provider Page
             ElevatedButton(
               onPressed: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) {
@@ -42,7 +57,9 @@ class HomePage extends StatelessWidget {
               })),
               child: const Text('Provider Page'),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: defaultHeigh),
+
+            // Provider Page2 with consumer
             ElevatedButton(
               onPressed: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) {
@@ -50,7 +67,9 @@ class HomePage extends StatelessWidget {
               })),
               child: const Text('Provider Page2'),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: defaultHeigh),
+
+            // State Provider Page
             ElevatedButton(
               onPressed: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) {
@@ -58,15 +77,19 @@ class HomePage extends StatelessWidget {
               })),
               child: const Text('State Provider Page'),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: defaultHeigh),
+
+            // State Notifier Provider Page
             ElevatedButton(
               onPressed: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) {
-                return const StateProviderPage();
+                return const StateNotifierPage();
               })),
               child: const Text('State Notifier Provider Page'),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: defaultHeigh),
+
+            // Change Notifier Provider Page
             ElevatedButton(
               onPressed: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) {
@@ -74,13 +97,57 @@ class HomePage extends StatelessWidget {
               })),
               child: const Text('Change Notifier Provider Page'),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: defaultHeigh),
+
+            // Future Stream Provider Page
             ElevatedButton(
               onPressed: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) {
                 return const FutureStreamPage();
               })),
               child: const Text('Future Stream Provider Page'),
+            ),
+            SizedBox(height: defaultHeigh),
+
+            // Future Stream Provider Page version2
+            ElevatedButton(
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) {
+                return const FutureStreamPageV2();
+              })),
+              child: const Text('Future Stream Provider Page V2'),
+            ),
+            const SizedBox(height: 20),
+
+            // Storage
+            const Text(
+              'Storage',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            SizedBox(height: defaultHeigh),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const SharePreferencePage();
+                  },
+                ),
+              ),
+              child: const Text('Share Perference'),
+            ),
+            SizedBox(height: defaultHeigh),
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const FlutterSecureStoragePage();
+                  },
+                ),
+              ),
+              child: const Text('Flutter Secure Storage'),
             ),
           ],
         ),

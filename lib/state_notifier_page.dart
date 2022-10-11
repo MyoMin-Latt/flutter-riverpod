@@ -33,7 +33,7 @@ class StateNotifierPage extends ConsumerWidget {
     final numberNotifierState = ref.watch(numberStateNotifierProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider: StateNotifierProvider'),
+        title: const Text('State Notifier Provider'),
       ),
       body: Center(
         child: ListView.builder(

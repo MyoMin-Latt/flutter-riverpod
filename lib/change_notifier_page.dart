@@ -29,7 +29,7 @@ class ChangeNotifierPage extends ConsumerWidget {
     final numberChangeNotifierState = ref.watch(numberChangeNotifierProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider: ChangeNotifierProvider'),
+        title: const Text('Change Notifier Provider'),
       ),
       body: Center(
         child: ListView.builder(
