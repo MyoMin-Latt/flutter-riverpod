@@ -16,7 +16,10 @@ class StateProviderPage extends ConsumerWidget {
         title: const Text('Provider: StateProvider'),
       ),
       body: Center(
-        child: Text(numberState.toString()),
+        child: Text(
+          numberState.toString(),
+          style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => increment(ref),

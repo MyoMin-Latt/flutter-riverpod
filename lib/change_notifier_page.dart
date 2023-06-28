@@ -19,6 +19,11 @@ class NumberChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
+  void update() {
+    _numbers.setAll(1, [1000]);
+    notifyListeners();
+  }
+
   void deleteByIndex(int index) {
     _numbers.removeAt(index);
     notifyListeners();
@@ -43,10 +48,17 @@ class ChangeNotifierPage extends ConsumerWidget {
         title: const Text('Provider: ChangeNotifier'),
         actions: [
           IconButton(
-              onPressed: () {
-                ref.read(numberChangeNotifierProvider.notifier).clear();
-              },
-              icon: const Icon(Icons.refresh))
+            onPressed: () {
+              ref.read(numberChangeNotifierProvider.notifier).clear();
+            },
+            icon: const Icon(Icons.replay),
+          ),
+          IconButton(
+            onPressed: () {
+              ref.read(numberChangeNotifierProvider.notifier).update();
+            },
+            icon: const Icon(Icons.update),
+          ),
         ],
       ),
       body: Center(

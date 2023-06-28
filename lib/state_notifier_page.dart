@@ -18,7 +18,8 @@ class NumberStateNotifier extends StateNotifier<List<int>> {
   void deleteByIndex(int index) {
     state = [
       for (var i = 0; i < state.length; i++)
-        if (i != index) state[i]
+        if (i != index) state[i],
+        
     ];
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_flutter_riverpod/change_notifier_page.dart';
+import 'package:state_flutter_riverpod/future_provider_page.dart';
 import 'package:state_flutter_riverpod/provider_page.dart';
 import 'package:state_flutter_riverpod/provider_page2.dart';
 import 'package:state_flutter_riverpod/scope_provider_page.dart';
@@ -8,6 +9,7 @@ import 'package:state_flutter_riverpod/state_notifier_page.dart';
 import 'package:state_flutter_riverpod/state_provider_page.dart';
 
 import 'future_stream_page.dart';
+import 'stream_provider_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
             ItemCard(title: "StateProvider", page: StateProviderPage()),
             ItemCard(title: "StateNotifier", page: StateNotifierPage()),
             ItemCard(title: "ChangeNotifier", page: ChangeNotifierPage()),
+            ItemCard(title: "FutureProvider", page: FutureProviderPage()),
+            ItemCard(title: "StreamProvider", page: StreamProviderPage()),
             ItemCard(title: "ScopeProvider", page: ScopeProviderPage()),
             ItemCard(title: "FutureStreamProvider", page: FutureStreamPage()),
           ],
