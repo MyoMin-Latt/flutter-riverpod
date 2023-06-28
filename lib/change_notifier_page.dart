@@ -1,15 +1,26 @@
 import 'dart:collection';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 // Number_Change_Notifier
 class NumberChangeNotifier extends ChangeNotifier {
-  final List<int> _numbers = [111];
+  List<int> _numbers = [];
 
   UnmodifiableListView<int> get numbers => UnmodifiableListView(_numbers);
 
   void add(int number) {
     _numbers.add(number);
+    notifyListeners();
+  }
+
+  void clear() {
+    _numbers = [];
+    notifyListeners();
+  }
+
+  void deleteByIndex(int index) {
+    _numbers.removeAt(index);
     notifyListeners();
   }
 }
@@ -29,22 +40,40 @@ class ChangeNotifierPage extends ConsumerWidget {
     final numberChangeNotifierState = ref.watch(numberChangeNotifierProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider: ChangeNotifierProvider'),
+        title: const Text('Provider: ChangeNotifier'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                ref.read(numberChangeNotifierProvider.notifier).clear();
+              },
+              icon: const Icon(Icons.refresh))
+        ],
       ),
       body: Center(
         child: ListView.builder(
             itemCount: numberChangeNotifierState.numbers.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child:
-                    Text(numberChangeNotifierState.numbers[index].toString()),
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Card(
+                    child: ListTile(
+                  title:
+                      Text(numberChangeNotifierState.numbers[index].toString()),
+                  trailing: IconButton(
+                      onPressed: () {
+                        ref
+                            .read(numberChangeNotifierProvider.notifier)
+                            .deleteByIndex(index);
+                      },
+                      icon: const Icon(Icons.close)),
+                )),
               );
             }),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ref.read(numberChangeNotifierProvider.notifier).add(111);
+          var digit = Random().nextInt(30);
+          ref.read(numberChangeNotifierProvider.notifier).add(digit);
         },
         child: const Icon(Icons.add),
       ),

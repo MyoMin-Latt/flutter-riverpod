@@ -13,7 +13,7 @@ class ProviderPage2 extends ConsumerWidget {
     final number = ref.watch(numberProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Provider: Use Consumer'),
+        title: const Text('Provider: Use ConsumerWidget'),
       ),
       body: Center(
         child: Text(number.toString()),
