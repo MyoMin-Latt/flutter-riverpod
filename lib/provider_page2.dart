@@ -16,7 +16,13 @@ class ProviderPage2 extends ConsumerWidget {
         title: const Text('Provider: Use ConsumerWidget'),
       ),
       body: Center(
-        child: Text(number.toString()),
+        child: Text(
+          number.toString(),
+          style: const TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

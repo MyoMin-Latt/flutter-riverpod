@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:state_flutter_riverpod/change_notifier_page.dart';
 import 'package:state_flutter_riverpod/future_provider_page.dart';
+import 'package:state_flutter_riverpod/notifier_page.dart';
 import 'package:state_flutter_riverpod/provider_page.dart';
 import 'package:state_flutter_riverpod/provider_page2.dart';
 import 'package:state_flutter_riverpod/scope_provider_page.dart';
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('RiverPod'),
+          title: const Text('RiverPod State Management'),
         ),
         body: ListView(
           children: const [
@@ -32,6 +34,7 @@ class MyApp extends StatelessWidget {
             ItemCard(title: "StateProvider", page: StateProviderPage()),
             ItemCard(title: "StateNotifier", page: StateNotifierPage()),
             ItemCard(title: "ChangeNotifier", page: ChangeNotifierPage()),
+            ItemCard(title: "Notifier", page: Notifierpage()),
             ItemCard(title: "FutureProvider", page: FutureProviderPage()),
             ItemCard(title: "StreamProvider", page: StreamProviderPage()),
             ItemCard(title: "ScopeProvider", page: ScopeProviderPage()),

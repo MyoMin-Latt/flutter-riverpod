@@ -11,6 +11,7 @@ class StateProviderPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final numberState = ref.watch(numberStateProvider);
+    final numberNotifier = ref.read(numberStateProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Provider: StateProvider'),
@@ -21,14 +22,22 @@ class StateProviderPage extends ConsumerWidget {
           style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => increment(ref),
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        children: [
+          FloatingActionButton(
+            onPressed: () => numberNotifier.state++,
+            child: const Icon(Icons.add),
+          ),
+          FloatingActionButton(
+            onPressed: () => numberNotifier.state--,
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
 
-  void increment(WidgetRef ref) {
-    ref.read(numberStateProvider.notifier).state++;
-  }
+  // void increment(WidgetRef ref) {
+  //   ref.read(numberStateProvider.notifier).state++;
+  // }
 }
